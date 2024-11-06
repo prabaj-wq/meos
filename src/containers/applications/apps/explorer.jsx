@@ -166,6 +166,22 @@ export const Explorer = () => {
     setShText("");
   }, [files.cpath]);
 
+  useEffect(() => {
+    // Initialize dycalendar
+    if (typeof window.dycalendar === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/dycalendar@1.2.1/js/dycalendar.min.js';
+      script.async = true;
+      script.onload = () => {
+        // Initialize any calendar-dependent code here
+        if (window.dycalendar) {
+          window.dycalendar.draw();
+        }
+      };
+      document.body.appendChild(script);
+    }
+  }, []);
+
   return (
     <div
       className="msfiles floatTab dpShad"
