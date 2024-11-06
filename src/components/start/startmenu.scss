@@ -8,6 +8,8 @@
 
 .dskApp {
   margin: 4px;
+  padding: 8px;
+  border-radius: 4px;
   height: 84px;
   width: 74px;
   display: flex;
@@ -22,7 +24,7 @@
     background: rgba(255, 255, 255, 0.24);
   }
   &:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--linux-hover);
   }
   &:focus {
     border: 1px dotted white;
@@ -30,49 +32,37 @@
 
   .appName {
     text-align: center;
-    color: #fafafa;
+    color: var(--linux-text);
     margin-top: 4px;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
   }
 }
 
 .startMenu {
-  --bg1: rgba(242, 242, 242, 0.9);
-  --bg2: rgba(255, 255, 255, 0.9);
-  --bg3: rgba(0, 0, 0, 0.033);
-  --bg4: #aaa;
-  --roundRad: 8px;
-
+  --bg1: var(--linux-panel);
   position: absolute;
-  bottom: 12px;
-  width: 640px;
-  height: min(100% - 24px, 720px);
-  left: 0;
-  &[data-align="center"] {
-    margin-left: auto;
-    margin-right: auto;
-    right: 0;
-    text-align: center;
-  }
-
-  &[data-align="left"] {
-    left: 8px;
-  }
-
-  color: var(--dark-txt);
+  bottom: 36px;
+  width: 320px;
+  height: min(100% - 48px, 600px);
+  left: 8px;
+  color: var(--linux-text);
   background: var(--bg1);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border-radius: var(--roundRad);
+  border-radius: 6px;
   overflow: hidden;
-  transition: all 0.2s cubic-bezier(0.79, 0.14, 0.15, 0.86);
-  z-index: 9999;
-  box-sizing: border-box;
-
-  &[data-hide="true"] {
-    transform: translateY(100px);
-    opacity: 0;
-    pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  
+  .search-bar {
+    padding: 8px;
+    background: var(--linux-hover);
+    
+    input {
+      width: 100%;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--linux-accent);
+      background: var(--linux-bg);
+      color: var(--linux-text);
+    }
   }
 }
 

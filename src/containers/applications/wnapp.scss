@@ -181,3 +181,47 @@ body[data-theme="dark"] .msfiles {
   --hover-bg: rgba(136, 136, 136, 0.5);
   --focus-bg: rgba(228, 228, 228, 0.5);
 }
+
+.floatTab {
+  --bg1: var(--linux-panel);
+  background: var(--bg1);
+  border-radius: 6px;
+  border: 1px solid var(--linux-primary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+  .windowScreen {
+    background: var(--linux-bg);
+    color: var(--linux-text);
+  }
+
+  .toolbar {
+    background: var(--linux-primary);
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 6px 6px 0 0;
+
+    .window-title {
+      color: var(--linux-text);
+      font-size: 14px;
+    }
+
+    .window-controls {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+
+      button {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: none;
+        
+        &.close { background: #ff5f57; }
+        &.minimize { background: #febc2e; }
+        &.maximize { background: #28c840; }
+      }
+    }
+  }
+}
