@@ -20,6 +20,21 @@ import { loadSettings } from "./actions";
 import * as Applications from "./containers/applications";
 import * as Drafts from "./containers/applications/draft";
 
+const CalendarErrorBoundary = ({ children }) => {
+  return (
+    <ErrorBoundary
+      FallbackComponent={({ error, resetErrorBoundary }) => (
+        <div className="calendar-error">
+          <p>Calendar failed to load</p>
+          <button onClick={resetErrorBoundary}>Retry</button>
+        </div>
+      )}
+    >
+      {children}
+    </ErrorBoundary>
+  );
+};
+
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
     <div>
@@ -162,7 +177,9 @@ function App() {
             <BandPane />
             <SidePane />
             <WidPane />
-            <CalnWid />
+            <CalendarErrorBoundary>
+              <CalnWid />
+            </CalendarErrorBoundary>
           </div>
           <Taskbar />
           <ActMenu />

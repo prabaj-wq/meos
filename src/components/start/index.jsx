@@ -232,26 +232,39 @@ export const SidePane = () => {
 export const CalnWid = () => {
   const sidepane = useSelector((state) => state.sidepane);
   const [loaded, setLoad] = useState(false);
-
   const [collapse, setCollapse] = useState("");
 
-  const collapseToggler = () => {
-    collapse === "" ? setCollapse("collapse") : setCollapse("");
+  const initializeCalendar = () => {
+    try {
+      if (window.dycalendar && typeof window.dycalendar.draw === 'function') {
+        window.dycalendar.draw({
+          target: "#dycalendar",
+          type: "month",
+          dayformat: "ddd",
+          monthformat: "full",
+          prevnextbutton: "show",
+          highlighttoday: true,
+        });
+      }
+    } catch (error) {
+      console.error('Calendar initialization error:', error);
+    }
   };
 
   useEffect(() => {
     if (!loaded) {
-      setLoad(true);
-      window.dycalendar.draw({
-        target: "#dycalendar",
-        type: "month",
-        dayformat: "ddd",
-        monthformat: "full",
-        prevnextbutton: "show",
-        highlighttoday: true,
-      });
+      const timer = setTimeout(() => {
+        initializeCalendar();
+        setLoad(true);
+      }, 1000); // Give time for dycalendar to load
+
+      return () => clearTimeout(timer);
     }
-  });
+  }, [loaded]);
+
+  const collapseToggler = () => {
+    collapse === "" ? setCollapse("collapse") : setCollapse("");
+  };
 
   return (
     <div
