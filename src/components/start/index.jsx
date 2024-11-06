@@ -292,3 +292,26 @@ export const CalnWid = () => {
     </div>
   );
 };
+
+export const StartMenu = () => {
+  return (
+    <div className="linux-start-menu">
+      <div className="search-bar">
+        <input type="text" placeholder="Search applications..." />
+      </div>
+      <div className="categories">
+        <div className="category">
+          <h3>Favorites</h3>
+          {/* Favorite apps */}
+        </div>
+        <div className="category">
+          <h3>All Applications</h3>
+          {/* All apps */}
+        </div>
+      </div>
+      <div className="quick-actions">
+        {/* Settings, Power options etc */}
+      </div>
+    </div>
+  );
+};
