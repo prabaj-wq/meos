@@ -24,6 +24,11 @@ const config = ({ mode }) => {
         },
       },
     },
+    resolve: {
+      alias: {
+        "@": "/src",
+      },
+    },
   });
 };
 
